@@ -62,12 +62,51 @@ The steps suggested in the [Github page of challenge](https://github.com/mathwor
   - Boxes are programmed to hover 0.2 m above the goal position, then descend.
   - Initially tried intermediate waypoints but led to confusion in robot motion.
 
+<br><br>
 
-**Step 1,2:**
-## Problem Setup—Data Collection and Reading
+Step 1,2:
+### Problem Setup—Data Collection and Reading
 
 - The data of box dimensions was assumed to be known when the operators loaded the boxes on the conveyor.
 - Basically, the boxes with known dimensions have a QR code or barcode that can be scanned in seconds and placed on the conveyor belt. As soon as these are scanned, their data will be added as an entry in an Excel sheet.
 - This is a more practical approach than just keeping the boxes on the conveyor and using image processing techniques to read dimensions. This can lead to more errors, higher computational power and lower speed.
 
+![Alt text](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/variable_box_generate.png)
+
+- The ‘SpawnBoxonBench’ block was changed to have a ‘From Spreadsheet’ block, which would read the dimension data at trigger
+
+<br><br>
+
+Steps 3,4:
+### Optimization Strategy
+
+_The excel sheet has more boxes than what can be packed, which is necessary for optimization. The boxes that are rejected can be returned to the conveyor belt and packed in the next turn._
+
+1. First, 1D optimization for the palette was tried out. The coordinates for the palette space were studied and a 2D bin packing code was written in python and results were obtained. 
+2. Rotation was enabled along the z-axis. 
+3. A greedy shelf-packing algorithm was used to start with. Python code can be found here: 2D bin packing 
+4. The 3D version of the code was made with the following logic:
+  - The boxes are arranged in descending order of their densities.
+  - The ones with higher density were placed in the bottom layer since the denser ones are rigid and can hold more weight. (This strategy should work when there is   no very large difference in weights and dimensions.)
+  - Another method was to arrange them in descending order of weights, but again, rigid, denser boxes may cause dents in bigger, less dense boxes.
+  - The less dense boxes have higher surface area (assumed height is same), so this potentially gives them better chance of avoiding overhangs
+
+**Constraints**
+
+1. After arranging the boxes in descending order of planar density (P = Wt / L*B), they are divided into 60% and 40%, i.e., 60% of the boxes are given a chance to fit in the lower layer and 40% on the top. The numbers are 60-40 since rigid boxes were expected to be smaller in size and suited for my data.
+Nonetheless, this parameter can be kept as a variable and solved dynamically after receiving data.
+2. The code returns the arrangement for both the 1st and 2nd layers. These goal locs can then be passed to the simulink model for placements.
+3. The 2nd layer arrangement follows a maximum 20% overhang rule, i.e., a minimum of 80% of their surface area must be supported for stability.
+
+These codes were then converted into .m files and thus integrated in matlab itself. So the users just need to load an excel with some specified column/row format, run the matlab file and then run the simulink model.
+
+![Alt text](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/packing_pic.png)
+
+The code files can be found here:
+
+1. 2D placements: 1 layer placements 
+- Excel file associated: Rectangles 
+2. 3D placements: 3D placements
+- Boxes data: Boxes 
+3. Sheet obtained after 3D optimization: 3D box placements
 
