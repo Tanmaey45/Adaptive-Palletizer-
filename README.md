@@ -126,3 +126,7 @@ _The next question was, what if boxes to be placed on layer 2 arrive first?_
   - In Round 1, all pickup locations are same, i.e., on the spawn box
   - In Round 2, the pickup locations for layer 2 are their goal locations on temporary platform
 - A MATLAB code was written to get an entire box pickup and goal schedule, which retained box IDs for temporary place and pickup.
+    - Code [Pickup and drop scheduler](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/originalID.m)
+    - Excel sheet obtained: [box pickup and drop schedule](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/box_pick_goal_schedule_14.xlsx)
+
+  
