@@ -104,9 +104,25 @@ These codes were then converted into .m files and thus integrated in matlab itse
 
 The code files can be found here:
 
-1. 2D placements: 1 layer placements 
-- Excel file associated: Rectangles 
-2. 3D placements: 3D placements
-- Boxes data: Boxes 
-3. Sheet obtained after 3D optimization: 3D box placements
+1. 2D placements: [1 layer placements](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/rectanglesPlacement.m); Excel file associated: [Rectangles](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/Rectangles.xlsx) 
+2. 3D placements: [3D placements](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/BoxesPlacementTwoLayers.m); Boxes data: [Boxes](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/Boxes.xlsx) 
+3. Sheet obtained after 3D optimization: [3D box placements](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/box_placements_3D_10.xlsx)
 
+<br><br>
+
+Steps 4,5
+### Goal Location feed and Layered Packing
+
+The goal location obtained in a excel were fed dynamically to the Trajectory planner using a triggered sybsytem block. Goal location along with angle (0 or 90 degrees) was fed.
+_The next question was, what if boxes to be placed on layer 2 arrive first?_
+
+- The boxes had to be temporarily stored somewhere. A temporary storage platform was made, which would store all the boxes of layer two unless all boxes are finished spawning. (This box is green.)
+- Another platform was made to reject boxes in a given packing after optimization is run. These boxes can be included in the next pallet. (This box is in red).
+- To achieve this, two optimization codes run
+  - Complete placements on palette (both layers)
+  - For placements on the temporary platform
+  - The placements on the temporary platform are done from the farthest point to the nearest and picked up in the opposite manner to avoid collisions.
+- A triggered pickup location block was added (falling type) to dynamically feed the pickup locs. 
+  - In Round 1, all pickup locations are same, i.e., on the spawn box
+  - In Round 2, the pickup locations for layer 2 are their goal locations on temporary platform
+- A MATLAB code was written to get an entire box pickup and goal schedule, which retained box IDs for temporary place and pickup.
