@@ -155,3 +155,27 @@ Hence, a strategy was made to avoid collisions:
 - Basically, two paths were calculated and interpolated to achieve this. The modified Manipulator code is here: [HelperPathPlanning Modified](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/helperPathPanning_Modified.m)
 
 
+However, this resulted in weird solutions.
+
+![Weird Sol](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/Weird_sol.png)
+
+### Better and already employed collision approach
+
+Collision approach
+
+We already know box placements, so if we add them as collision objects then it would automatically follow the lowering stratrgy wherever needed and would be more accurate then previous appraoch in robot planning.
+Also the prev method had redundant hoverings for temporary and rejection boxes.
+
+Add already placed boxes as dynamic collision objects in the environment. That’s the recommended and more natural way to avoid collisions in planning, instead of trying to “manually dodge” them with pre-goal waypoints.
+
+So all the new objects were added into the collision environment 
+
+The temporary storage box and Rejection box were added in actors in **modified** [exampleHelperGetInitActorProp](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/exampleHelperGetInitActorProp.m)
+
+![Actor Addition](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/Actor_addition.png)
+
+The actors were added to collision environment in **modified** [exampleHelperGetCollisionEnvironment](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/exampleHelperGetCollisionEnvironment.m)
+
+![Collision box Addition](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/Collision_box_addition.png)
+
+
