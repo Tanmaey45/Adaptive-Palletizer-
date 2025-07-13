@@ -134,13 +134,18 @@ _The next question was, what if boxes to be placed on layer 2 arrive first?_
 - The box IDs for Pickup are triggered at falling instead of raising. Hence, pickup location and ID in 2nd round must start a row before in the sheet to be read properly. Hence, 2 sheets were generated in [box pickup and drop schedule](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/box_pick_goal_schedule_14.xlsx) using [Pickup and drop scheduler](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/originalID.m), where Sheet 2 has modified row and IDs with Pickup and IDs advancing by one row. This was tested and results were obtained correct.
 - A sheet 3 is also generated for Dynamic box dim and location, which is for Collision avoidance, will be discussed in next section.
 
-
+Sheet 1
+![Sheet 1](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/sheet1_boxpicup14.png)
+Sheet 2
+![Sheet 2](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/Sheet2_boxpic.png)
       
 <br><br>
 Step 6:
 ### Trajectory Planning to avoid Collision
 
 The trajectory planner plans waypoints that may be colliding with already placed boxes. The collision environment assumes the grasped box to be a part of the robot but doesn’t consider other boxes to be.
+
+
 
 Hence, a strategy was made to avoid collisions:
 
