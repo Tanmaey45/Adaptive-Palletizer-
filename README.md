@@ -201,6 +201,9 @@ Current box (grasped box) update in Modified [exampleHelperManipulatorRRT](https
 
 1. After updating collision environment to incorporate the newly added boxes as well as dropped boxes, the robot is going to collision environment and throwing an error "Robot configuration is in world collision. So though the strategy is working on test data with few boxes, it is not completely working or getting simulated as of now.
 2. The boxes when grasped in round from temporary storage are clinged higher and hence are released with a force when near goal loc.
+
+![Picking error](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/picking_error.png)
+   
 3. The startegy and required modifications are made in the model, it is implementable also, but robot configurations are under collision.
 
 ## Model Setup 
