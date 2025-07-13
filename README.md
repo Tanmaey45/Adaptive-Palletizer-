@@ -214,7 +214,9 @@ Current box (grasped box) update in Modified [exampleHelperManipulatorRRT](https
 - Robot Setup: [Rbt setup](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/Rbt_setup.m)
 - Pickup and drop scheduler: [Box pickup drop scheduler](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/originalID.m)
 
+**Test sheet - for validating video**
 
-
+All the new collision adjustments need to be commented for validating video
+The [test sheet](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/test.xlsx) block is already present in all the subsystems, only links needs to attached to see model working similar to video.
 
 
