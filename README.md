@@ -212,7 +212,7 @@ Current box (grasped box) update in Modified [exampleHelperManipulatorRRT](https
 **MATLAB files to run**
 
 - Robot Setup: [Rbt setup](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/Rbt_setup.m)
-- Pickup and drop scheduler: [Box pcikup drop scheduler](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/originalID.m)
+- Pickup and drop scheduler: [Box pickup drop scheduler](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/originalID.m)
 
 
 
