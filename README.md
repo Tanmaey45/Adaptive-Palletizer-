@@ -205,13 +205,16 @@ Current box (grasped box) update in Modified [exampleHelperManipulatorRRT](https
 
 ## Model Setup 
 
-- Simulink Model: [Palletize variable size boxes]()
-- Sheets for working: [Pickup and drop schedule 14]()
+- Simulink Model: [Palletize variable size boxes](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/PalletizeBoxesUsingCobot.slx)
+  (Cache is also added in the repository)
+- Sheets for working: [Pickup and drop schedule 14](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/box_pick_goal_schedule_14.xlsx)
 
 **MATLAB files to run**
 
-- Robot Setup: [Rbt setup]()
-- Pickup and drop scheduler: [Box pcikup drop scheduler]()
+- Robot Setup: [Rbt setup](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/Rbt_setup.m)
+- Pickup and drop scheduler: [Box pcikup drop scheduler](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/originalID.m)
+
+
 
 
 
