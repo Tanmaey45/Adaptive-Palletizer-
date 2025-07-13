@@ -178,4 +178,19 @@ The actors were added to collision environment in **modified** [exampleHelperGet
 
 ![Collision box Addition](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/Collision_box_addition.png)
 
+The box which was dropped was also updated as a collision box in modified [exampleHelperGetCollisionEnvironment](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/exampleHelperGetCollisionEnvironment.m)
+Howver, we need box dimensions and positions of previous box to be read at each point in order to update it as a collision box. Hence, the box dim and box position of previous box were supplied to subsytem helperpathplanning. 
+
+This is was achieved by just making a sheet3 in the box pickup schedule and moving all rows down by 1 row and adding first row as a box with zero dimension.
+
+![Collision box Addition](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/boxpic_sheet3.png)
+
+Dropped box update
+
+![Dropped box Addition](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/dyanmic_dropped_box_update.png)
+
+Current box (grasped box) update in Modified [exampleHelperManipulatorRRT](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/exampleHelperManipulatorRRT.m)
+
+![Current box Addition](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/grasped_box_dyanmic_dim_change.png)
+
 
