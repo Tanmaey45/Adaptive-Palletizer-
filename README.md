@@ -129,4 +129,24 @@ _The next question was, what if boxes to be placed on layer 2 arrive first?_
     - Code [Pickup and drop scheduler](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/originalID.m)
     - Excel sheet obtained: [box pickup and drop schedule](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/box_pick_goal_schedule_14.xlsx)
 
-  
+**ID issue and solution**
+
+- The box IDs for Pickup are triggered at falling instead of raising. Hence, pickup location and ID in 2nd round must start a row before in the sheet to be read properly. Hence, 2 sheets were generated in [box pickup and drop schedule](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/box_pick_goal_schedule_14.xlsx) using [Pickup and drop scheduler](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/originalID.m), where Sheet 2 has modified row and IDs with Pickup and IDs advancing by one row. This was tested and results were obtained correct.
+- A sheet 3 is also generated for Dynamic box dim and location, which is for Collision avoidance, will be discussed in next section.
+
+
+      
+<br><br>
+Step 6:
+### Trajectory Planning to avoid Collision
+
+The trajectory planner plans waypoints that may be colliding with already placed boxes. The collision environment assumes the grasped box to be a part of the robot but doesn’t consider other boxes to be.
+
+Hence, a strategy was made to avoid collisions:
+
+- An intermediate waypoint was added in all trajectories - A point 0.2 m above the goal location.
+-  So all boxes went to a point 0.2 m above their goal initially, thereby avoiding all the collisions of placed boxes.
+-  After reaching the intermediate waypoint, the box would be lowered and placed there.
+- Basically, two paths were calculated and interpolated to achieve this. The modified Manipulator code is here: [HelperPathPlanning Modified](https://github.com/Tanmaey45/Adaptive-Palletizer-/blob/main/helperPathPanning_Modified.m)
+
+
